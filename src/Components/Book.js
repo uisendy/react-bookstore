@@ -1,5 +1,11 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { BOOK_DELETED } from '../redux/books/booksSlice';
+const dispatch = useDispatch();
 
+const handleDeleteBook = () => {
+  dispatch(BOOK_DELETED({ bookId }));
+};
 const Book = ({ bookId, title, author }) => {
   return (
     <>
