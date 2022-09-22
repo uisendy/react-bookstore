@@ -10,6 +10,15 @@ const AddNewBook = () => {
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onAuthorChanged = (e) => setAuthor(e.target.value);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (title && author) {
+      dispatch(BOOK_ADDED(title, author));
+      setAuthor('');
+      setTitle('');
+    }
+  };
+
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
       <h3>Add new book</h3>
