@@ -5,6 +5,7 @@ import categoriesReducer from '../redux/categories/categoriesSlice';
 const store = configureStore({
   reducer: {
     books: booksReducer,
+    categories: categoriesReducer,
   },
 });
 
