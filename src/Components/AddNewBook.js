@@ -15,9 +15,8 @@ const AddNewBook = () => {
     e.preventDefault();
     if (title && author) {
       dispatch(BOOK_ADDED(title, author));
-
-      setTitle('');
       setAuthor('');
+      setTitle('');
     }
   };
   return (
