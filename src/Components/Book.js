@@ -1,14 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { BOOK_DELETED } from '../redux/books/booksSlice';
 
 const Book = ({ bookId, title, author }) => {
-  const dispatch = useDispatch();
-
-  const handleDeleteBook = () => {
-    dispatch(BOOK_DELETED({ bookId }));
-  };
-
   return (
     <>
       <li className="book-container">
