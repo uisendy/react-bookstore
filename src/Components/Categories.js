@@ -6,17 +6,6 @@ import {
 } from '../redux/categories/categoriesSlice';
 
 const Categories = () => {
-  const dispatch = useDispatch();
-
-  const categories = useSelector(selectAllCategories);
-
-  const handleCheckStatus = () => {
-    dispatch(
-      CATEGORY({
-        value: 'Under Construction',
-      }),
-    );
-  };
   return (
     <div>
       <button type="button" onClick={handleCheckStatus}>
