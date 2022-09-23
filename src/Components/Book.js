@@ -2,18 +2,18 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { BOOK_DELETED } from '../redux/books/booksSlice';
 
-const Book = ({ bookId, title, author }) => {
+const Book = ({ book }) => {
   const dispatch = useDispatch();
 
   const handleDeleteBook = () => {
-    dispatch(BOOK_DELETED({ bookId }));
+    dispatch(BOOK_DELETED(book.id));
   };
 
   return (
     <>
       <li className="book-container">
-        <h2>{title}</h2>
-        <p>{author}</p>
+        <h2>{book.title}</h2>
+        <p>{book.author}</p>
         <button type="button" onClick={handleDeleteBook}>
           delete
         </button>
