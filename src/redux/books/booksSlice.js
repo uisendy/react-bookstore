@@ -29,6 +29,19 @@ export const postNewBook = createAsyncThunk(
   },
 );
 
+export const deleteBook = createAsyncThunk(
+  'books/deleteBook',
+  async (postData) => {
+    try {
+      console.log(`${URL}/${postData.item_id}`);
+      await axios.delete(`${URL}/${postData.item_id}`, postData);
+      return postData;
+    } catch (err) {
+      throw new Error(err);
+    }
+  },
+);
+
 const booksSlice = createSlice({
   name: 'books',
   initialState,
