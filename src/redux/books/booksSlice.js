@@ -7,7 +7,6 @@ const initialState = {
   status: 'idle',
   error: null,
 };
-
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
   try {
     const response = await axios.get(URL);
@@ -48,7 +47,7 @@ const booksSlice = createSlice({
   reducers: {
     BOOK_ADDED: {
       reducer(state, action) {
-        state.push(action.payload);
+        state.books.push(action.payload);
       },
       prepare(title, author) {
         return {
