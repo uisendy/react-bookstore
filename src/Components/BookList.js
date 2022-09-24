@@ -34,6 +34,7 @@ const BookList = () => {
             bookId={key}
             title={value[0].title}
             author={value[0].author}
+            category={value[0].category}
           />
         ))}
       </ul>
