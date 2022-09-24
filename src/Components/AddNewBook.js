@@ -22,12 +22,11 @@ const AddNewBook = () => {
       {category.category}
     </option>
   ));
-  const ableToSave =
-    [title, author, category].every(Boolean) && addRequestStatus === 'idle';
+  const ableToSave = [title, author, category !== 'select category'].every(Boolean)
+    && addRequestStatus === 'idle';
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('ran');
 
     if (ableToSave) {
       try {
@@ -35,9 +34,9 @@ const AddNewBook = () => {
         dispatch(
           postNewBook({
             item_id: nanoid(),
-            title: title,
-            author: author,
-            category: category,
+            title,
+            author,
+            category,
           }),
         ).unwrap();
 
@@ -59,7 +58,7 @@ const AddNewBook = () => {
         type="text"
         className="title"
         placeholder="book title"
-        value={title.value}
+        value={title}
         onChange={(e) => onTitleChanged(e)}
       />
       <input
@@ -70,7 +69,7 @@ const AddNewBook = () => {
         onChange={(e) => onAuthorChanged(e)}
       />
       <select value={category} onChange={(e) => onCategoryChanged(e)}>
-        <option value=""></option>
+        <option>select category</option>
         {categoryOptions}
       </select>
       <button type="submit" className="addBtn" disabled={!ableToSave}>

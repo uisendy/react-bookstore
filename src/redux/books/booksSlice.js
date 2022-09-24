@@ -32,7 +32,6 @@ export const deleteBook = createAsyncThunk(
   'books/deleteBook',
   async (postData) => {
     try {
-      console.log(`${URL}/${postData.item_id}`);
       await axios.delete(`${URL}/${postData.item_id}`, postData);
       return postData;
     } catch (err) {
@@ -61,14 +60,13 @@ const booksSlice = createSlice({
     },
     BOOK_DELETED: {
       reducer(state, action) {
-        console.log(action.payload);
         delete state.books[action.payload.bookId];
       },
     },
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchBooks.pending, (state, action) => {
+      .addCase(fetchBooks.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(fetchBooks.fulfilled, (state, action) => {
@@ -102,7 +100,6 @@ const booksSlice = createSlice({
       })
       .addCase(deleteBook.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        console.log(action.payload.item_id);
         delete state.books[action.payload.item_id];
       });
   },

@@ -17,7 +17,6 @@ const BookList = () => {
   const error = useSelector(getError);
 
   useEffect(() => {
-    console.log('effect ran');
     if (status === 'idle') {
       dispatch(fetchBooks());
     }
