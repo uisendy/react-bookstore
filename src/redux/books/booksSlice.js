@@ -76,7 +76,6 @@ const booksSlice = createSlice({
       })
       .addCase(fetchBooks.rejected, (state, action) => {
         state.status = 'failed';
-
         state.error = action.error.message;
       })
       .addCase(postNewBook.fulfilled, (state, action) => {
