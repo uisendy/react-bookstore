@@ -43,9 +43,15 @@ const booksSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(fetchBooks.pending, (state, action) => {
-      state.status = 'loading';
-    });
+    builder
+      .addCase(fetchBooks.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchBooks.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        const data = action.payload;
+        state.books = data;
+      });
   },
 });
 
