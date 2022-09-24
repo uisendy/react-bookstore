@@ -49,8 +49,8 @@ const booksSlice = createSlice({
     },
     BOOK_DELETED: {
       reducer(state, action) {
-        const { bookId } = action.payload;
-        return state.filter((book) => book.id !== bookId);
+        console.log(action.payload);
+        delete state.books[action.payload.bookId];
       },
     },
   },
