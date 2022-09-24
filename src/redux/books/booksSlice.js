@@ -51,6 +51,11 @@ const booksSlice = createSlice({
         state.status = 'succeeded';
         const data = action.payload;
         state.books = data;
+      })
+      .addCase(fetchBooks.rejected, (state, action) => {
+        state.status = 'failed';
+
+        state.error = action.error.message;
       });
   },
 });
