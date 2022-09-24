@@ -17,6 +17,18 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
   }
 });
 
+export const postNewBook = createAsyncThunk(
+  'books/postNewBook',
+  async (postData) => {
+    try {
+      await axios.post(URL, postData);
+      return postData;
+    } catch (err) {
+      throw new Error(err);
+    }
+  },
+);
+
 const booksSlice = createSlice({
   name: 'books',
   initialState,
