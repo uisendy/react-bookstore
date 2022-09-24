@@ -87,6 +87,11 @@ const booksSlice = createSlice({
           ]),
         );
         state.books = { ...state.books, ...entries };
+      })
+      .addCase(deleteBook.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        console.log(action.payload.item_id);
+        delete state.books[action.payload.item_id];
       });
   },
 });
