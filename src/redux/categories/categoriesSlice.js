@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = [];
+const initialState = [
+  { id: 0, category: 'sci-fi' },
+  { id: 1, category: 'Economy' },
+  { id: 2, category: 'Technology' },
+];
 
 const categoriesSlice = createSlice({
   name: 'categories',
