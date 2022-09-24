@@ -17,8 +17,7 @@ const BookList = () => {
   const error = useSelector(getError);
 
   useEffect(() => {
-    console.log(books);
-    console.log(status);
+    console.log('effect ran');
     if (status === 'idle') {
       dispatch(fetchBooks());
     }
@@ -26,18 +25,20 @@ const BookList = () => {
 
   let content;
   if (status === 'Loading') {
-    console.log('loading');
     content = <p>&quot,loading...&quot,</p>;
   } else if (status === 'succeeded') {
-    console.log('succeeded');
     content = (
       <ul>
-        {books.map((book) => (
-          <Book key={nanoid()} book={book} />
+        {Object.entries(books).map(([key, value]) => (
+          <Book
+            key={nanoid()}
+            bookId={key}
+            title={value[0].title}
+            author={value[0].author}
+          />
         ))}
       </ul>
     );
-    console.log('succeeded DOM');
   } else if (status === 'failed') {
     content = <p>{error}</p>;
   }
