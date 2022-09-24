@@ -42,6 +42,11 @@ const booksSlice = createSlice({
       },
     },
   },
+  extraReducers(builder) {
+    builder.addCase(fetchBooks.pending, (state, action) => {
+      state.status = 'loading';
+    });
+  },
 });
 
 export const selectAllBooks = (state) => state.books;
