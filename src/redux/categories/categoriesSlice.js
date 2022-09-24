@@ -1,10 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
-const initialState = [
-  { id: 0, category: 'sci-fi' },
-  { id: 1, category: 'Economy' },
-  { id: 2, category: 'Technology' },
-];
+const initialState = {
+  categories: [
+    { id: nanoid(), category: 'sci-fi' },
+    { id: nanoid(), category: 'Economy' },
+    { id: nanoid(), category: 'Technology' },
+  ],
+  underConstruction: [],
+};
 
 const categoriesSlice = createSlice({
   name: 'categories',
@@ -12,7 +15,7 @@ const categoriesSlice = createSlice({
   reducers: {
     CATEGORY: {
       reducer(state, action) {
-        state.push(action.payload);
+        state.underConstruction.push(action.payload);
       },
     },
   },
