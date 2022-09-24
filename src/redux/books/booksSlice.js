@@ -56,11 +56,32 @@ const booksSlice = createSlice({
         state.status = 'failed';
 
         state.error = action.error.message;
+      })
+      .addCase(postNewBook.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        const data = action.payload;
+        const entries = Object.fromEntries(
+          new Map([
+            [
+              data.item_id,
+              [
+                {
+                  title: data.title,
+                  author: data.author,
+                  category: data.category,
+                },
+              ],
+            ],
+          ]),
+        );
+        state.books = { ...state.books, ...entries };
       });
   },
 });
 
-export const selectAllBooks = (state) => state.books;
+export const getAllBooks = (state) => state.books.books;
+export const getStatus = (state) => state.books.status;
+export const getError = (state) => state.books.error;
 
 export const { BOOK_ADDED, BOOK_DELETED } = booksSlice.actions;
 
